@@ -35,7 +35,7 @@ project {
 }
 
 object Develop : BuildType({
-    name = "Develop Branch"
+    name = "Develop Branch v2"
 
     vcs {
         root(CateringMasterIosVcs)
