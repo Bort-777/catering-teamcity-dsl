@@ -60,6 +60,9 @@ object CateringMasterIosVcs : GitVcsRoot({
     name = "CateringIosVcs"
     url = "ssh://git@git.itransition.com:7999/cateringapp/cateringapp.ios.git"
     branch = "refs/heads/develop"
+    authMethod = uploadedKey {
+        uploadedKey = "private-key-teamcity"
+    } 
 })
 
 
