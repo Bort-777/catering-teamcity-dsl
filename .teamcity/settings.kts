@@ -67,5 +67,6 @@ object CateringMasterIosVcs : GitVcsRoot({
     branch = "refs/heads/develop"
     authMethod = uploadedKey {
         uploadedKey = "private-key-teamcity"
+        passphrase = "credentialsJSON:sshpass"
     }
 })
