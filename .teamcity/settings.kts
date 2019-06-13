@@ -34,8 +34,10 @@ project {
     buildType(Develop)
 
     params {
-        password("passphrase", "credentialsJSON:e4ce2b2c-9f4f-497d-b2fd-66973d91d658", label = "test", description = "test", display = ParameterDisplay.PROMPT)
-        password("sshpass", "credentialsJSON:5cc94f88-d4ea-4b92-b1f8-934027067e1f", description = "ssh", display = ParameterDisplay.PROMPT, readOnly = true)
+        password(
+            name = "sandbox_oauth_token",
+            value = "credentialsJSON:8625f88766da"
+        )
     }
 }
 
@@ -72,6 +74,6 @@ object CateringMasterIosVcs : GitVcsRoot({
     branch = "refs/heads/develop"
     authMethod = uploadedKey {
         uploadedKey = "private-key-teamcity"
-        passphrase = "credentialsJSON:5cc94f88-d4ea-4b92-b1f8-934027067e1f"
+        passphrase = "credentialsJSON:8625f88766da"
     }
 })
