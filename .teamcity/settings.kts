@@ -30,13 +30,14 @@ version = "2019.1"
 project {
 
     vcsRoot(CateringMasterIosVcs)
+    vcsRoot(CateringDslVcs)
 
     buildType(Develop)
 
     params {
         password(
-            name = "sandbox_oauth_token",
-            value = "credentialsJSON:8625f88766da"
+            name = "private-key-teamcity-passphrase",
+            value = "zxxeca472a15bc1fde845f2b24babecd2a3"
         )
     }
 }
@@ -74,6 +75,15 @@ object CateringMasterIosVcs : GitVcsRoot({
     branch = "refs/heads/develop"
     authMethod = uploadedKey {
         uploadedKey = "private-key-teamcity"
-        passphrase = "credentialsJSON:8625f88766da"
+        passphrase = "private-key-teamcity-passphrase"
+    }
+})
+
+object CateringDslVcs : GitVcsRoot({
+    name = "DslVcs"
+    url = "git@github.com:Bort-777/catering-teamcity-dsl.git"
+    authMethod = uploadedKey {
+        uploadedKey = "private-key-teamcity"
+        passphrase = "private-key-teamcity-passphrase"
     }
 })
