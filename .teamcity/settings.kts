@@ -77,10 +77,11 @@ object Fast : BuildType({
         script {
             name = "Install Dependencies"
             scriptContent = "pod install"
+            enabled = false
         }
         script {
-            name = "Analysing (clean build)"
-            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean build"
+            name = "Analysing (analyze build)"
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme \"CateringApp Demo\" -sdk iphonesimulator analyze build"
         }
     }
 
@@ -105,6 +106,7 @@ object OldFullBuild : BuildType({
         }
         script {
             name = "Analysing (clean analyze)"
+            enabled = false
             scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze"
         }
         script {
