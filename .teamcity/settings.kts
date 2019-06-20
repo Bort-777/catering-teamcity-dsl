@@ -82,9 +82,9 @@ object Fast : BuildType({
             scriptContent = "pod install"
         }
         script {
-            name = "Analysing (clean analyze)"
+            name = "Analysing (clean analyze build)"
             enabled = false
-            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze"
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze build"
         }
     }
 
