@@ -32,7 +32,9 @@ project {
     vcsRoot(CateringMasterIosVcs)
     vcsRoot(HttpsGithubComBort777cateringTeamcityDslRefsHeadsMaster)
 
+    buildType(Fast)
     buildType(Develop)
+    buildType(OldFullBuild)
 
     params {
         password("private-key-teamcity-passphrase", "credentialsJSON:d27fa17f-3074-4e5c-a7d1-5967427b9572")
@@ -62,6 +64,58 @@ object Develop : BuildType({
     triggers {
         vcs {
             groupCheckinsByCommitter = true
+        }
+    }
+})
+
+object Fast : BuildType({
+    name = "Fast Build"
+
+    vcs {
+        root(CateringMasterIosVcs)
+    }
+
+    steps {
+        script {
+            name = "Install Dependencies"
+            enabled = false
+            scriptContent = "pod install"
+        }
+        script {
+            name = "Analysing (clean analyze)"
+            enabled = false
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze"
+        }
+    }
+
+    triggers {
+        vcs {
+            groupCheckinsByCommitter = true
+        }
+    }
+})
+
+object OldFullBuild : BuildType({
+    name = "Old Full Build"
+
+    vcs {
+        root(CateringMasterIosVcs)
+    }
+
+    steps {
+        script {
+            name = "Install Dependencies"
+            enabled = false
+            scriptContent = "pod install"
+        }
+        script {
+            name = "Analysing (clean analyze)"
+            enabled = false
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze"
+        }
+        script {
+            name = "Archive"
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -configuration Release -scheme CateringApp DEVELOPEMENT_TEAM=\"NCJC54GM5Z\" PROVISIONING_PROFILE_SPECIFIER=\"Catering App\" PROVISIONING_PROFILE=\"NCJC54GM5Z\" archive -archivePath CateringApp.xcarchive"
         }
     }
 })
