@@ -30,15 +30,12 @@ version = "2019.1"
 project {
 
     vcsRoot(CateringMasterIosVcs)
-    vcsRoot(CateringDslVcs)
+    vcsRoot(HttpsGithubComBort777cateringTeamcityDslRefsHeadsMaster)
 
     buildType(Develop)
 
     params {
-        password(
-            name = "private-key-teamcity-passphrase",
-            value = "zxxeca472a15bc1fde845f2b24babecd2a3"
-        )
+        password("private-key-teamcity-passphrase", "credentialsJSON:d27fa17f-3074-4e5c-a7d1-5967427b9572")
     }
 }
 
@@ -75,15 +72,11 @@ object CateringMasterIosVcs : GitVcsRoot({
     branch = "refs/heads/develop"
     authMethod = uploadedKey {
         uploadedKey = "private-key-teamcity"
-        passphrase = "private-key-teamcity-passphrase"
+        passphrase = "credentialsJSON:f6e3f5b2-bbd8-4d38-ae1f-038007fa3dbb"
     }
 })
 
-object CateringDslVcs : GitVcsRoot({
-    name = "DslVcs"
-    url = "git@github.com:Bort-777/catering-teamcity-dsl.git"
-    authMethod = uploadedKey {
-        uploadedKey = "private-key-teamcity"
-        passphrase = "private-key-teamcity-passphrase"
-    }
+object HttpsGithubComBort777cateringTeamcityDslRefsHeadsMaster : GitVcsRoot({
+    name = "https://github.com/Bort-777/catering-teamcity-dsl#refs/heads/master"
+    url = "https://github.com/Bort-777/catering-teamcity-dsl"
 })
