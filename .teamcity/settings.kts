@@ -55,11 +55,11 @@ object Develop : BuildType({
         }
         script {
             name = "Analysing (clean analyze)"
-            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme CateringApp -sdk iphonesimulator clean analyze"
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -scheme \"CateringApp Demo\" -sdk iphonesimulator clean analyze"
         }
         script {
             name = "Archive"
-            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -configuration Release -scheme CateringApp DEVELOPEMENT_TEAM=\"NCJC54GM5Z\" PROVISIONING_PROFILE_SPECIFIER=\"Catering App\" PROVISIONING_PROFILE=\"NCJC54GM5Z\" archive -archivePath CateringApp.xcarchive"
+            scriptContent = "xcodebuild -workspace CateringApp.xcworkspace -configuration Release -scheme \"CateringApp Demo\" DEVELOPEMENT_TEAM=\"NCJC54GM5Z\" PROVISIONING_PROFILE_SPECIFIER=\"Catering App\" PROVISIONING_PROFILE=\"NCJC54GM5Z\" archive -archivePath CateringApp.xcarchive"
         }
     }
 
